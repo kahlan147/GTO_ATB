@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 0
-  APCost: 0
-  ManaCost: 0
+  APCost: 2
   AttackName: Shoot arrow
   TargetAllies: 0
+  effectsList: 

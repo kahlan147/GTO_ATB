@@ -9,6 +9,8 @@ public class CombatManager : MonoBehaviour {
     {
         public Character ActiveCharacter;
         public Character ToBeActiveCharacter;
+        public float Charge;
+        public bool isAttacking;
     }
 
     public Player player1;
@@ -33,9 +35,6 @@ public class CombatManager : MonoBehaviour {
     private bool[] P1Charges;
     private bool[] P2Charges;
 
-    private float P1Charge = 0;
-    private float P2Charge = 0;
-
     private bool P1CharSelect = false;
     private bool P2CharSelect = false;
 
@@ -50,7 +49,10 @@ public class CombatManager : MonoBehaviour {
         P1ChargeBar.gameObject.SetActive(false);
         P2ChargeBar.gameObject.SetActive(false);
 
-        
+        player1.isAttacking = false;
+        player2.isAttacking = false;
+        player1.Charge = 0;
+        player2.Charge = 0;
 
     }
 
@@ -64,8 +66,20 @@ public class CombatManager : MonoBehaviour {
     void Update (){
         if (CombatTriggered)
         {
-            Charge(ref P1ChargeBar, ref P1Charges, ref P1Charge, 0.17f);
-            Charge(ref P2ChargeBar, ref P2Charges, ref P2Charge, 0.1f);
+            float P1ChargeSpeed = 0.17f;
+            float P2ChargeSpeed = 0.1f;
+            if (player1.isAttacking)
+            {
+                P1ChargeSpeed = 0;
+            }
+            Charge(ref P1ChargeBar, ref P1Charges, ref player1.Charge, P1ChargeSpeed);
+
+            if (player2.isAttacking)
+            {
+                P2ChargeSpeed = 0;
+            }
+            Charge(ref P2ChargeBar, ref P2Charges, ref player2.Charge, P2ChargeSpeed);
+
             checkControls(1);
             checkControls(2);
         }
@@ -190,7 +204,7 @@ public class CombatManager : MonoBehaviour {
                                     uiChoosable = GetAttackByChoice(player2.ToBeActiveCharacter, choice);
                                 }
                             }
-                            P1AttackBarManager.AddAttack(uiChoosable);
+                            P2AttackBarManager.AddAttack(uiChoosable);
                         }
                         break;
                 }
@@ -232,10 +246,16 @@ public class CombatManager : MonoBehaviour {
                 switch (PlayerNumber)
                 {
                     case 1:
-                        P1Attack();
+                        if (!player1.isAttacking)
+                        {
+                            StartCoroutine(P1Attack());
+                        }
                         break;
                     case 2:
-                        P2Attack();
+                        if (!player2.isAttacking)
+                        {
+                            StartCoroutine(P2Attack());
+                        }
                         break;
                 }
             }
@@ -318,22 +338,44 @@ public class CombatManager : MonoBehaviour {
         return ChooseAbleCharacters;
     }
 
-    private void P1Attack()
-    {
+    private IEnumerator P1Attack() {
         
+        player1.isAttacking = true;
+        List<UIChoosable> choosables = new List<UIChoosable>();
+        choosables.AddRange(P1AttackBarManager.getAttacks());
+
+        foreach (UIChoosable choosable in choosables)
+        {
+            P1AttackBarManager.RemoveFirstAttack();
+            player1.Charge -= ((1f / 8f) * choosable.getApCost());
+            yield return new WaitForSeconds(choosable.getApCost());
+        }
+        player1.isAttacking = false;
+        yield return null;
     }
 
-    private void P2Attack()
+    private IEnumerator P2Attack()
     {
+        player2.isAttacking = true;
+        List<UIChoosable> choosables = new List<UIChoosable>();
+        choosables.AddRange(P2AttackBarManager.getAttacks());
 
+        foreach (UIChoosable choosable in choosables)
+        {
+            P2AttackBarManager.RemoveFirstAttack();
+            player2.Charge -= ((1f / 8f) * choosable.getApCost());
+            yield return new WaitForSeconds(choosable.getApCost());
+        }
+        player2.isAttacking = false;
+        yield return null;
     }
 
     private void TriggerCombat(bool triggered){
         CombatTriggered = triggered;
         P1ChargeBar.gameObject.SetActive(triggered);
         P2ChargeBar.gameObject.SetActive(triggered);
-        P1Charge = 0;
-        P2Charge = 0;
+        player1.Charge = 0;
+        player2.Charge = 0;
         P1Charges = new bool[AmountOfCharges];
         P2Charges = new bool[AmountOfCharges];
         ShowAttacksForCharacters();

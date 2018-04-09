@@ -8,7 +8,6 @@ public class Attack : MonoBehaviour, UIChoosable {
     [Tooltip("Negative values to heal a target")]
     public int Damage;
     public int APCost;
-    public int ManaCost;
     public string AttackName;
     [Tooltip("True if the attack may only target allied characters")]
     public bool TargetAllies;

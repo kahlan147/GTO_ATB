@@ -23,6 +23,11 @@ public class AttackBarManager : MonoBehaviour {
 		
 	}
 
+    public List<UIChoosable> getAttacks()
+    {
+        return attacks;
+    }
+
     public void AddAttack(UIChoosable attack)
     {
         if (ApUsed < MaxAp && (ApUsed + attack.getApCost()) <= MaxAp)
