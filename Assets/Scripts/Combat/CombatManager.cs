@@ -176,37 +176,64 @@ public class CombatManager : MonoBehaviour {
                     case 1:
                         choice = P1AttackPanel.GetChoice();
                         if (choice != -1){
-                            UIChoosable uiChoosable;
+                            UIChoosable uiChoosable = null;
                             if (P1CharSelect){
-                                uiChoosable = GetCharacterByChoice(choice);
-                            }
-                            else{
-                                uiChoosable = GetAttackByChoice(player1.ActiveCharacter, choice);
-                                if (uiChoosable == null){
-                                    uiChoosable = GetAttackByChoice(player1.ToBeActiveCharacter, choice);
+                                if (player1.ToBeActiveCharacter == null)
+                                {
+                                    uiChoosable = GetCharacterByChoice(choice);
+                                    player1.ToBeActiveCharacter = (Character)uiChoosable;
+                                    P1AttackPanel.showData(player1.ToBeActiveCharacter.GetAttacks());
+                                    P1CharSelect = false;
                                 }
                             }
-                            P1AttackBarManager.AddAttack(uiChoosable);
+                            else{
+
+                                if (player1.ToBeActiveCharacter != null)
+                                {
+                                    uiChoosable = GetAttackByChoice(player1.ToBeActiveCharacter, choice);
+                                }
+                                else
+                                {
+                                    uiChoosable = GetAttackByChoice(player1.ActiveCharacter, choice);
+                                }
+                            }
+                            if (uiChoosable != null)
+                            {
+                                P1AttackBarManager.AddAttack(uiChoosable);
+                            }
                         }
                         break;
                     case 2:
                         choice = P2AttackPanel.GetChoice();
                         if (choice != -1)
                         {
-                            UIChoosable uiChoosable;
+                            UIChoosable uiChoosable = null;
                             if (P2CharSelect)
                             {
-                                uiChoosable = GetCharacterByChoice(choice);
+                                if (player2.ToBeActiveCharacter == null)
+                                {
+                                    uiChoosable = GetCharacterByChoice(choice);
+                                    player2.ToBeActiveCharacter = (Character)uiChoosable;
+                                    P2AttackPanel.showData(player2.ToBeActiveCharacter.GetAttacks());
+                                    P2CharSelect = false;
+                                }
                             }
                             else
                             {
-                                uiChoosable = GetAttackByChoice(player2.ActiveCharacter, choice);
-                                if (uiChoosable == null)
+
+                                if (player2.ToBeActiveCharacter != null)
                                 {
                                     uiChoosable = GetAttackByChoice(player2.ToBeActiveCharacter, choice);
                                 }
+                                else
+                                {
+                                    uiChoosable = GetAttackByChoice(player2.ActiveCharacter, choice);
+                                }
                             }
-                            P2AttackBarManager.AddAttack(uiChoosable);
+                            if (uiChoosable != null)
+                            {
+                                P2AttackBarManager.AddAttack(uiChoosable);
+                            }
                         }
                         break;
                 }
@@ -222,9 +249,16 @@ public class CombatManager : MonoBehaviour {
                         {
                             P1CharSelect = false;
                             P1AttackPanel.showData(player1.ActiveCharacter.GetAttacks());
+                            player1.ToBeActiveCharacter = null;
                         }
                         else
                         {
+                            List<UIChoosable> choosables = P1AttackBarManager.getAttacks();
+                            if (choosables[choosables.Count-1] is Character)
+                            {
+                                P1AttackPanel.showData(player1.ActiveCharacter.GetAttacks());
+                                player1.ToBeActiveCharacter = null;
+                            }
                             P1AttackBarManager.RemoveLastAttack();
                         }
                         break;
@@ -248,13 +282,13 @@ public class CombatManager : MonoBehaviour {
                 switch (PlayerNumber)
                 {
                     case 1:
-                        if (!player1.isAttacking)
+                        if (!player1.isAttacking && player1.Charge >= 1)
                         {
                             StartCoroutine(P1Attack());
                         }
                         break;
                     case 2:
-                        if (!player2.isAttacking)
+                        if (!player2.isAttacking && player2.Charge >= 1)
                         {
                             StartCoroutine(P2Attack());
                         }
@@ -353,7 +387,8 @@ public class CombatManager : MonoBehaviour {
             if (choosable is Character)
             {
                 Character character = (Character)choosable;
-                //????
+                player1.ActiveCharacter = character;
+                player1.ToBeActiveCharacter = null;
             }
             else
             {

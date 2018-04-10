@@ -12,6 +12,8 @@ public class Character : MonoBehaviour, UIChoosable {
 
     public GameObject MyModel;
 
+    private int ApAvailable;
+
     private List<UIChoosable> attacks;
 
 	// Use this for initialization
@@ -21,6 +23,7 @@ public class Character : MonoBehaviour, UIChoosable {
         attacks.Add(attack2);
         attacks.Add(attack3);
         attacks.Add(attack4);
+        ApAvailable = 4;
 	}
 
     // Update is called once per frame

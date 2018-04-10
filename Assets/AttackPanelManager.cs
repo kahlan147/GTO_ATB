@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class AttackPanelManager : MonoBehaviour {
     
@@ -76,19 +77,17 @@ public class AttackPanelManager : MonoBehaviour {
     {
         LeftTopPanel.GetComponentInChildren<Text>().text = items[0].getName();
         RightTopPanel.GetComponentInChildren<Text>().text = items[1].getName();
-        if (items[2] != null)
-        {
+        try {
             LeftBottomPanel.GetComponentInChildren<Text>().text = items[2].getName();
         }
-        else
+        catch(ArgumentOutOfRangeException e)
         {
             LeftBottomPanel.GetComponentInChildren<Text>().text = "unavailable";
         }
-        if (items[3] != null)
-        {
+        try {
             RightBottomPanel.GetComponentInChildren<Text>().text = items[3].getName();
         }
-        else
+        catch(ArgumentOutOfRangeException e)
         {
             RightBottomPanel.GetComponentInChildren<Text>().text = "unavailable";
         }
