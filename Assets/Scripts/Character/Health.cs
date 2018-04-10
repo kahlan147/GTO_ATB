@@ -17,12 +17,13 @@ public class Health : MonoBehaviour {
 		
 	}
 
-    public void TakeDamage(int Damage)
+    public bool TakeDamage(int Damage)
     {
         CurrentHealth -= Damage;
         if (CurrentHealth <= 0)
         {
-            //Do dieing stuff. 
+            return true;
         }
+        return false;
     }
 }

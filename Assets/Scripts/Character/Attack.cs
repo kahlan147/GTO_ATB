@@ -11,6 +11,8 @@ public class Attack : MonoBehaviour, UIChoosable {
     public string AttackName;
     [Tooltip("True if the attack may only target allied characters")]
     public bool TargetAllies;
+    [Tooltip("True if the attack is a melee ability")]
+    public bool Melee;
 
     public List<Effect.effect> effectsList;
 

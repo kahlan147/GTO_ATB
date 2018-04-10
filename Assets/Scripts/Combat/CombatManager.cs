@@ -11,6 +11,7 @@ public class CombatManager : MonoBehaviour {
         public Character ToBeActiveCharacter;
         public float Charge;
         public bool isAttacking;
+        public Transform MeleeLocation;
     }
 
     public Player player1;
@@ -27,9 +28,11 @@ public class CombatManager : MonoBehaviour {
     public AttackBarManager P1AttackBarManager;
     public AttackBarManager P2AttackBarManager;
 
-  //------------------------------------------------------------------------------------------------
-    private Health PlayersHealth;
+    public Health enemyHealth;
+    public Health PlayersHealth;
 
+    //------------------------------------------------------------------------------------------------
+    
     private int AmountOfCharges = 8;
 
     private bool[] P1Charges;
@@ -42,7 +45,7 @@ public class CombatManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        PlayersHealth = this.GetComponent<Health>();
+        
         P1Charges = new bool[AmountOfCharges];
         P2Charges = new bool[AmountOfCharges];
 
@@ -59,7 +62,6 @@ public class CombatManager : MonoBehaviour {
     private void OnEnable()
     {
         GameplaySwitcher.CombatTriggered += TriggerCombat;
-        
     }
 
     // Update is called once per frame
@@ -348,6 +350,16 @@ public class CombatManager : MonoBehaviour {
         {
             P1AttackBarManager.RemoveFirstAttack();
             player1.Charge -= ((1f / 8f) * choosable.getApCost());
+            if (choosable is Character)
+            {
+                Character character = (Character)choosable;
+                //????
+            }
+            else
+            {
+                Attack attack = (Attack)choosable;
+                AttackEnemy(attack);
+            }
             yield return new WaitForSeconds(choosable.getApCost());
         }
         player1.isAttacking = false;
@@ -379,5 +391,18 @@ public class CombatManager : MonoBehaviour {
         P1Charges = new bool[AmountOfCharges];
         P2Charges = new bool[AmountOfCharges];
         ShowAttacksForCharacters();
+    }
+
+    private void AttackEnemy(Attack attack)
+    {
+        bool dead = false;
+        if (attack.TargetAllies)
+        {
+            PlayersHealth.TakeDamage(attack.Damage);
+        }
+        else
+        {
+            dead = enemyHealth.TakeDamage(attack.Damage);
+        }
     }
 }

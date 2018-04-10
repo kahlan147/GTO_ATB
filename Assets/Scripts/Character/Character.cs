@@ -10,6 +10,8 @@ public class Character : MonoBehaviour, UIChoosable {
     public Attack attack3;
     public Attack attack4;
 
+    public GameObject MyModel;
+
     private List<UIChoosable> attacks;
 
 	// Use this for initialization

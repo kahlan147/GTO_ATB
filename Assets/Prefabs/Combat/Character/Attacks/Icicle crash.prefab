@@ -51,9 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4f737a4ecea81469c7c89256bd6c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
+  Damage: 15
   APCost: 3
-  ManaCost: 0
   AttackName: Icicle crash
   TargetAllies: 0
   effectsList: 0000000000000000
