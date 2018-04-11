@@ -32,6 +32,8 @@ public class CombatManager : MonoBehaviour {
     public Health enemyHealth;
     public Health PlayersHealth;
 
+    public GameplaySwitcher switcher;
+
     //------------------------------------------------------------------------------------------------
     
     private int AmountOfCharges = 8;
@@ -69,8 +71,26 @@ public class CombatManager : MonoBehaviour {
     void Update (){
         if (CombatTriggered)
         {
-            float P1ChargeSpeed = 0.17f;
-            float P2ChargeSpeed = 0.1f;
+            float P1ChargeSpeed = player1.ActiveCharacter.ChargeSpeed;
+            float P2ChargeSpeed = player2.ActiveCharacter.ChargeSpeed;
+
+            if (P1AttackBarManager.getApUsed() >= 4 && player1.ToBeActiveCharacter == null && !player1.isAttacking)
+            {
+                P1AttackPanel.showData(getListOfChooseAbleCharacters());
+                P1CharSelect = true;
+                if (Input.GetButtonDown("P1Revert")) { P1Revert(); }
+            }
+
+            if (P2AttackBarManager.getApUsed() >= 4 && player2.ToBeActiveCharacter == null && !player2.isAttacking)
+            {
+                P2AttackPanel.showData(getListOfChooseAbleCharacters());
+                P2CharSelect = true;
+                if (Input.GetButtonDown("P2Revert")){    P2Revert();     }
+            }
+
+            if (Input.GetButtonDown("P1Revert")){    P1Revert();     }
+            if (Input.GetButtonDown("P2Revert")){    P2Revert();     }
+
             if (player1.isAttacking)
             {
                 P1ChargeSpeed = 0;
@@ -240,43 +260,6 @@ public class CombatManager : MonoBehaviour {
                 }
             }
 
-            //Revert
-            if (Input.GetButtonDown("P" + PlayerNumber + "Revert"))
-            {
-                switch (PlayerNumber)
-                {
-                    case 1:
-                        if (P1CharSelect)
-                        {
-                            P1CharSelect = false;
-                            P1AttackPanel.showData(player1.ActiveCharacter.GetAttacks());
-                            player1.ToBeActiveCharacter = null;
-                        }
-                        else
-                        {
-                            List<UIChoosable> choosables = P1AttackBarManager.getAttacks();
-                            if (choosables[choosables.Count-1] is Character)
-                            {
-                                P1AttackPanel.showData(player1.ActiveCharacter.GetAttacks());
-                                player1.ToBeActiveCharacter = null;
-                            }
-                            P1AttackBarManager.RemoveLastAttack();
-                        }
-                        break;
-                    case 2:
-                        if (P2CharSelect)
-                        {
-                            P2CharSelect = false;
-                            P2AttackPanel.showData(player2.ActiveCharacter.GetAttacks());
-                        }
-                        else
-                        {
-                            P2AttackBarManager.RemoveLastAttack();
-                        }
-                        break;
-                }
-            }
-
             //Release
             if (Input.GetButtonDown("P" + PlayerNumber + "Release"))
             {
@@ -302,15 +285,61 @@ public class CombatManager : MonoBehaviour {
             {
                 switch (PlayerNumber) {
                     case 1:
-                        P1AttackPanel.showData(getListOfChooseAbleCharacters());
-                        P1CharSelect = true;
+                        if (player1.ToBeActiveCharacter == null)
+                        {
+                            P1AttackPanel.showData(getListOfChooseAbleCharacters());
+                            P1CharSelect = true;
+                        }
                         break;
                     case 2:
-                        P2AttackPanel.showData(getListOfChooseAbleCharacters());
-                        P2CharSelect = true;
+                        if (player2.ToBeActiveCharacter == null)
+                        {
+                            P2AttackPanel.showData(getListOfChooseAbleCharacters());
+                            P2CharSelect = true;
+                        }
                         break;
                 }
             }
+        }
+    }
+
+    private void P1Revert()
+    {
+        if (P1CharSelect)
+        {
+            P1CharSelect = false;
+            P1AttackPanel.showData(player1.ActiveCharacter.GetAttacks());
+            player1.ToBeActiveCharacter = null;
+        }
+        else
+        {
+            List<UIChoosable> choosables = P1AttackBarManager.getAttacks();
+            if (choosables[choosables.Count - 1] is Character)
+            {
+                P1AttackPanel.showData(player1.ActiveCharacter.GetAttacks());
+                player1.ToBeActiveCharacter = null;
+            }
+            P1AttackBarManager.RemoveLastAttack();
+        }
+    }
+
+    private void P2Revert()
+    {
+        if (P2CharSelect)
+        {
+            P2CharSelect = false;
+            P2AttackPanel.showData(player2.ActiveCharacter.GetAttacks());
+            player2.ToBeActiveCharacter = null;
+        }
+        else
+        {
+            List<UIChoosable> choosables = P2AttackBarManager.getAttacks();
+            if (choosables[choosables.Count - 1] is Character)
+            {
+                P2AttackPanel.showData(player2.ActiveCharacter.GetAttacks());
+                player2.ToBeActiveCharacter = null;
+            }
+            P2AttackBarManager.RemoveLastAttack();
         }
     }
 
@@ -394,18 +423,7 @@ public class CombatManager : MonoBehaviour {
             else
             {
                 Attack attack = (Attack)choosable;
-                if (attack.Melee) {
-                    Debug.Log("melee");
-                    if (player1.ToBeActiveCharacter == null)
-                    {
-                        StartCoroutine(MoveToLocation(player1.ActiveCharacter, player1.MeleeLocation, attack.getApCost()));
-                    }
-                    else
-                    {
-                        StartCoroutine(MoveToLocation(player1.ToBeActiveCharacter, player1.MeleeLocation, attack.getApCost()));
-                    }
-                }
-                AttackEnemy(attack);
+                AttackEnemy(attack, player1);
             }
             yield return new WaitForSeconds(choosable.getApCost());
         }
@@ -423,12 +441,23 @@ public class CombatManager : MonoBehaviour {
         {
             P2AttackBarManager.RemoveFirstAttack();
             player2.Charge -= ((1f / 8f) * choosable.getApCost());
+            if (choosable is Character)
+            {
+                Character character = (Character)choosable;
+                player2.ActiveCharacter = character;
+                player2.ToBeActiveCharacter = null;
+            }
+            else
+            {
+                Attack attack = (Attack)choosable;
+                AttackEnemy(attack, player2);
+            }
             yield return new WaitForSeconds(choosable.getApCost());
         }
         player2.isAttacking = false;
         yield return null;
     }
-
+    
     private void TriggerCombat(bool triggered){
         CombatTriggered = triggered;
         P1ChargeBar.gameObject.SetActive(triggered);
@@ -440,8 +469,13 @@ public class CombatManager : MonoBehaviour {
         ShowAttacksForCharacters();
     }
 
-    private void AttackEnemy(Attack attack)
+    private void AttackEnemy(Attack attack, Player player)
     {
+        if (attack.Melee)
+        {
+            StartCoroutine(MoveToLocation(player.ActiveCharacter, player.MeleeLocation, attack.getApCost()));
+        }
+
         bool dead = false;
         if (attack.TargetAllies)
         {
@@ -451,12 +485,16 @@ public class CombatManager : MonoBehaviour {
         {
             dead = enemyHealth.TakeDamage(attack.Damage);
         }
+        if (dead)
+        {
+            StartCoroutine(switcher.EndOfCombat());
+        }
     }
 
     private IEnumerator MoveToLocation(Character character, Transform location, int duration)
     {
         character.MyModel.transform.position = location.position;
-        yield return new WaitForSeconds(duration - 0.5f);
+        yield return new WaitForSeconds(duration - 0.25f);
         character.MyModel.transform.position = new Vector3(character.transform.position.x, character.transform.position.y + 1, character.transform.position.z);
         yield return null;
     }

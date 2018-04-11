@@ -12,6 +12,8 @@ public class Character : MonoBehaviour, UIChoosable {
 
     public GameObject MyModel;
 
+    public float ChargeSpeed;
+
     private int ApAvailable;
 
     private List<UIChoosable> attacks;

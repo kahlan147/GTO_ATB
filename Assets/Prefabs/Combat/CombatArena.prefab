@@ -352,7 +352,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1784705558226258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.22, y: 0, z: -2.53}
+  m_LocalPosition: {x: -3.22, y: 1, z: -2.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4243772723479222}
@@ -509,7 +509,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1941059314659878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.08, y: 0, z: 0.43}
+  m_LocalPosition: {x: -4.08, y: 1, z: 0.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4243772723479222}
@@ -1006,11 +1006,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Ice mage
-  attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
-  attack2: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
-  attack3: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
-  attack4: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
+  attack1: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
+  attack2: {fileID: 114239470384746648, guid: aa10a5ca3800ca840b9822519c984a76, type: 2}
+  attack3: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
+  attack4: {fileID: 114239470384746648, guid: 4ff133f9671aa184a85f4526d4b39e32, type: 2}
   MyModel: {fileID: 1987563569283660}
+  ChargeSpeed: 0.08
 --- !u!114 &114187064965113604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1023,11 +1024,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Rogue
-  attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
-  attack2: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d, type: 2}
-  attack3: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
-  attack4: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
+  attack1: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
+  attack2: {fileID: 114239470384746648, guid: a691f8d7f3f7336499c5310b8873558b, type: 2}
+  attack3: {fileID: 114239470384746648, guid: 4b1737a76fab22c4bbe6a3f21d1e8b2e, type: 2}
+  attack4: {fileID: 114239470384746648, guid: 800581f71c38ac348bc8a50b4c270733, type: 2}
   MyModel: {fileID: 1795145547792382}
+  ChargeSpeed: 0.17
 --- !u!114 &114287929227533364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1040,11 +1042,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Priest
-  attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
-  attack2: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d, type: 2}
-  attack3: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
-  attack4: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
+  attack1: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
+  attack2: {fileID: 114239470384746648, guid: 655d9565f4e8c8b4091e87ddce960fd1, type: 2}
+  attack3: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d, type: 2}
+  attack4: {fileID: 114239470384746648, guid: aaa6eaeaf2bdedb469ff1b80adabf2ae, type: 2}
   MyModel: {fileID: 1583937994992582}
+  ChargeSpeed: 0.1
 --- !u!114 &114345462954393556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1083,6 +1086,7 @@ MonoBehaviour:
   P2AttackBarManager: {fileID: 0}
   enemyHealth: {fileID: 114769031805031006}
   PlayersHealth: {fileID: 114804523046383376}
+  switcher: {fileID: 0}
 --- !u!114 &114769031805031006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1095,6 +1099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 50
+  HealthText: {fileID: 0}
 --- !u!114 &114804523046383376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1107,6 +1112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 50
+  HealthText: {fileID: 0}
 --- !u!114 &114855644702157826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1119,11 +1125,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Fire mage
-  attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
-  attack2: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
-  attack3: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
-  attack4: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d, type: 2}
+  attack1: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
+  attack2: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
+  attack3: {fileID: 114239470384746648, guid: ee779a172df96964ba825e07b7118372, type: 2}
+  attack4: {fileID: 114239470384746648, guid: 23aaf925da7c62d4cb6e15e97b0407b6, type: 2}
   MyModel: {fileID: 1091550181690934}
+  ChargeSpeed: 0.12
 --- !u!114 &114865068458177394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1137,10 +1144,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Ranger
   attack1: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
-  attack2: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d, type: 2}
-  attack3: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
-  attack4: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
+  attack2: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
+  attack3: {fileID: 114239470384746648, guid: 7f81925936f6c764c8df4d2bbdc1c25c, type: 2}
+  attack4: {fileID: 114239470384746648, guid: bf67a800d8d6acb46a2ad56efb774c85, type: 2}
   MyModel: {fileID: 1959234143014054}
+  ChargeSpeed: 0.13
 --- !u!114 &114867207549911140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1153,11 +1161,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Warrior
-  attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
-  attack2: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
-  attack3: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
-  attack4: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
+  attack1: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
+  attack2: {fileID: 114239470384746648, guid: 9becd8ba74a2a4844ad43a0c6b3de7ea, type: 2}
+  attack3: {fileID: 114239470384746648, guid: 661412c9e8bfa8646880b0d2f1e93749, type: 2}
+  attack4: {fileID: 114239470384746648, guid: bd0a8e731199ce947993338d4cfb1a69, type: 2}
   MyModel: {fileID: 1559414020658760}
+  ChargeSpeed: 0.15
 --- !u!136 &136095941396132970
 CapsuleCollider:
   m_ObjectHideFlags: 1

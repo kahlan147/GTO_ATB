@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameplaySwitcher : MonoBehaviour {
 
     public CameraController cameraController;
+    public GameObject VictoryScreen;
 
     public delegate void TriggerCombat(bool triggered);
     public static event TriggerCombat CombatTriggered;
@@ -13,8 +14,8 @@ public class GameplaySwitcher : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        VictoryScreen.SetActive(false);
+    }
 
     private void OnEnable()
     {
@@ -30,7 +31,17 @@ public class GameplaySwitcher : MonoBehaviour {
         cameraController.SwitchCamera();
         Destroy(enemy.gameObject);
         CombatTriggered(true);
-        //TO BE WORKED ON.
+    }
+    
+
+    public IEnumerator EndOfCombat()
+    {
+        VictoryScreen.SetActive(true);
+        yield return new WaitForSeconds(2);
+        VictoryScreen.SetActive(false);
+        cameraController.SwitchCamera();
+        CombatTriggered(false);
+        yield return null;
     }
 
     public void combatTriggeredDebug() //REMOVE LATER

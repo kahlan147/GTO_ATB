@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
 
     public int MaxHealth;
+    public Text HealthText;
+
     private int CurrentHealth;
 
 	// Use this for initialization
@@ -24,6 +27,7 @@ public class Health : MonoBehaviour {
         {
             return true;
         }
+        HealthText.text = "Health: " + CurrentHealth + " / " + MaxHealth + ".";
         return false;
     }
 }

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4350962031382884}
   - component: {fileID: 114239470384746648}
   m_Layer: 0
-  m_Name: Shoot arrow
+  m_Name: Stunning strike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4f737a4ecea81469c7c89256bd6c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
-  APCost: 1
-  AttackName: Shoot arrow
+  Damage: 10
+  APCost: 2
+  AttackName: Stunning strike
   TargetAllies: 0
-  Melee: 0
+  Melee: 1
   effectsList: 

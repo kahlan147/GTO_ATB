@@ -40,7 +40,7 @@ public class Tile : MonoBehaviour {
     {
         if (EndTile)
         {
-            Debug.Log("You win!");
+            level.NextLevel();
         }
 
         if (enemy != null)
@@ -89,6 +89,13 @@ public class Tile : MonoBehaviour {
             }
         }
     }
-    
+
+    private void OnDestroy()
+    {
+        if (this.enemy != null)
+        {
+            Destroy(enemy);
+        }
+    }
 
 }

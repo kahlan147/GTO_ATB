@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4350962031382884}
   - component: {fileID: 114239470384746648}
   m_Layer: 0
-  m_Name: Shoot arrow
+  m_Name: Snowball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 5
   APCost: 1
-  AttackName: Shoot arrow
+  AttackName: Snowball
   TargetAllies: 0
   Melee: 0
-  effectsList: 
+  effectsList: 0000000000000000

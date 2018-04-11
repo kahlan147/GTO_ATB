@@ -12,21 +12,28 @@ public class Level : MonoBehaviour {
     public TextAsset LevelFile;
     public ExploringParty party;
     public CameraController cameraController;
-
+    public GameObject VictoryScreen;
+    
     private List<List<int>> LevelArray;
     private Tile SpawnTile;
 
 	// Use this for initialization
 	void Start () {
+
         ReadLevelTextFile();
         BuildLevel();
         SpawnPlayer();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void NextLevel()
+    {
+        VictoryScreen.SetActive(true);
+    }
 
     private void BuildLevel()
     {
@@ -48,6 +55,7 @@ public class Level : MonoBehaviour {
                 {
                     SpawnTile = levelTile;
                 }
+
                 x++;
             }
             x = 0;
@@ -73,21 +81,6 @@ public class Level : MonoBehaviour {
                 row = new List<int>();
             }
         }
-
-        //Testing purposes, uncomment to test.
-        /*int y = 0;
-        int x = 0;
-        foreach (List<int> rowz in LevelArray)
-        {
-            
-            foreach (int number in rowz)
-            {
-                Debug.Log("("+ x + "," + y +")" + number);
-                x++;
-            }
-            x = 0;
-            y++;
-        }*/
     }
 
     private void SpawnPlayer()

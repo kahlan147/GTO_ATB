@@ -23,6 +23,11 @@ public class AttackBarManager : MonoBehaviour {
 		
 	}
 
+    public int getApUsed()
+    {
+        return ApUsed;
+    }
+
     public List<UIChoosable> getAttacks()
     {
         return attacks;
