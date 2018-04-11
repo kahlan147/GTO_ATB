@@ -469,7 +469,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1901324362175878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.08, y: 0, z: 0}
+  m_LocalPosition: {x: 3.13, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4445346269025014}
@@ -576,7 +576,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1046890071542060}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.43, y: 0, z: 0}
+  m_LocalPosition: {x: 5.04, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4451832188930360}
@@ -1005,11 +1005,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2735a1832e35a44b8a720c4fbd358c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Bob
-  attack1: {fileID: 0}
-  attack2: {fileID: 0}
-  attack3: {fileID: 0}
-  attack4: {fileID: 0}
+  CharacterName: Ice mage
+  attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
+  attack2: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
+  attack3: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
+  attack4: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
   MyModel: {fileID: 1987563569283660}
 --- !u!114 &114187064965113604
 MonoBehaviour:
@@ -1022,11 +1022,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2735a1832e35a44b8a720c4fbd358c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Erica
-  attack1: {fileID: 0}
-  attack2: {fileID: 0}
-  attack3: {fileID: 0}
-  attack4: {fileID: 0}
+  CharacterName: Rogue
+  attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
+  attack2: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d, type: 2}
+  attack3: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
+  attack4: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
   MyModel: {fileID: 1795145547792382}
 --- !u!114 &114287929227533364
 MonoBehaviour:
@@ -1039,11 +1039,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2735a1832e35a44b8a720c4fbd358c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Gonzales
-  attack1: {fileID: 0}
-  attack2: {fileID: 0}
-  attack3: {fileID: 0}
-  attack4: {fileID: 0}
+  CharacterName: Priest
+  attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
+  attack2: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d, type: 2}
+  attack3: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
+  attack4: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
   MyModel: {fileID: 1583937994992582}
 --- !u!114 &114345462954393556
 MonoBehaviour:
@@ -1057,13 +1057,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1:
-    ActiveCharacter: {fileID: 0}
+    ActiveCharacter: {fileID: 114867207549911140}
     ToBeActiveCharacter: {fileID: 0}
     Charge: 0
     isAttacking: 0
     MeleeLocation: {fileID: 4491785026014880}
   player2:
-    ActiveCharacter: {fileID: 0}
+    ActiveCharacter: {fileID: 114855644702157826}
     ToBeActiveCharacter: {fileID: 0}
     Charge: 0
     isAttacking: 0
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2735a1832e35a44b8a720c4fbd358c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: George
+  CharacterName: Fire mage
   attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
   attack2: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
   attack3: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
@@ -1135,11 +1135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2735a1832e35a44b8a720c4fbd358c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Mira
-  attack1: {fileID: 0}
-  attack2: {fileID: 0}
-  attack3: {fileID: 0}
-  attack4: {fileID: 0}
+  CharacterName: Ranger
+  attack1: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}
+  attack2: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d, type: 2}
+  attack3: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361, type: 2}
+  attack4: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
   MyModel: {fileID: 1959234143014054}
 --- !u!114 &114867207549911140
 MonoBehaviour:
@@ -1152,7 +1152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2735a1832e35a44b8a720c4fbd358c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Steven
+  CharacterName: Warrior
   attack1: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716, type: 2}
   attack2: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020, type: 2}
   attack3: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f, type: 2}

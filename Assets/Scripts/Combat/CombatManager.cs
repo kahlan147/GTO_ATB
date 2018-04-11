@@ -12,6 +12,7 @@ public class CombatManager : MonoBehaviour {
         public float Charge;
         public bool isAttacking;
         public Transform MeleeLocation;
+        
     }
 
     public Player player1;
@@ -393,6 +394,17 @@ public class CombatManager : MonoBehaviour {
             else
             {
                 Attack attack = (Attack)choosable;
+                if (attack.Melee) {
+                    Debug.Log("melee");
+                    if (player1.ToBeActiveCharacter == null)
+                    {
+                        StartCoroutine(MoveToLocation(player1.ActiveCharacter, player1.MeleeLocation, attack.getApCost()));
+                    }
+                    else
+                    {
+                        StartCoroutine(MoveToLocation(player1.ToBeActiveCharacter, player1.MeleeLocation, attack.getApCost()));
+                    }
+                }
                 AttackEnemy(attack);
             }
             yield return new WaitForSeconds(choosable.getApCost());
@@ -439,5 +451,13 @@ public class CombatManager : MonoBehaviour {
         {
             dead = enemyHealth.TakeDamage(attack.Damage);
         }
+    }
+
+    private IEnumerator MoveToLocation(Character character, Transform location, int duration)
+    {
+        character.MyModel.transform.position = location.position;
+        yield return new WaitForSeconds(duration - 0.5f);
+        character.MyModel.transform.position = new Vector3(character.transform.position.x, character.transform.position.y + 1, character.transform.position.z);
+        yield return null;
     }
 }

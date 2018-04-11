@@ -329,112 +329,14 @@ Prefab:
       propertyPath: P2AttackBarManager
       value: 
       objectReference: {fileID: 1925930398}
-    - target: {fileID: 114345462954393556, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: player1.ActiveCharacter
-      value: 
-      objectReference: {fileID: 880756138}
-    - target: {fileID: 114345462954393556, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: player2.ActiveCharacter
-      value: 
-      objectReference: {fileID: 864919546}
-    - target: {fileID: 114187064965113604, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack1
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716,
-        type: 2}
-    - target: {fileID: 114187064965113604, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack2
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d,
-        type: 2}
-    - target: {fileID: 114187064965113604, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack3
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020,
-        type: 2}
-    - target: {fileID: 114187064965113604, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack4
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361,
-        type: 2}
-    - target: {fileID: 114002037743059136, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack1
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716,
-        type: 2}
-    - target: {fileID: 114002037743059136, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack2
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020,
-        type: 2}
-    - target: {fileID: 114002037743059136, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack3
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361,
-        type: 2}
-    - target: {fileID: 114002037743059136, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack4
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f,
-        type: 2}
-    - target: {fileID: 114287929227533364, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack1
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716,
-        type: 2}
-    - target: {fileID: 114287929227533364, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack2
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d,
-        type: 2}
-    - target: {fileID: 114287929227533364, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack3
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 7fc1a147c939d0342839dfb7f6bb0020,
-        type: 2}
-    - target: {fileID: 114287929227533364, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack4
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361,
-        type: 2}
-    - target: {fileID: 114865068458177394, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack1
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 1183d3817097de1478bfb716d3dbed4f,
-        type: 2}
-    - target: {fileID: 114865068458177394, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack2
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: b8be5b7478748494aa56c694dd31874d,
-        type: 2}
-    - target: {fileID: 114865068458177394, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack3
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 2c472cd8ff33f024e90cd305bd6e2361,
-        type: 2}
-    - target: {fileID: 114865068458177394, guid: fbef2e335466a2d4b9516a185d56d816,
-        type: 2}
-      propertyPath: attack4
-      value: 
-      objectReference: {fileID: 114239470384746648, guid: 1d4ae16a6acd78c45ad0a74cd8c19716,
-        type: 2}
+    - target: {fileID: 4491785026014880, guid: fbef2e335466a2d4b9516a185d56d816, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4090665021996494, guid: fbef2e335466a2d4b9516a185d56d816, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbef2e335466a2d4b9516a185d56d816, type: 2}
   m_IsPrefabParent: 0
@@ -591,18 +493,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1628273567}
   m_Script: {fileID: 11500000, guid: 7a9b1918f8c5ac14ea3df1e7ac8d3696, type: 3}
---- !u!114 &864919546 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114855644702157826, guid: fbef2e335466a2d4b9516a185d56d816,
-    type: 2}
-  m_PrefabInternal: {fileID: 426393382}
-  m_Script: {fileID: 11500000, guid: b2735a1832e35a44b8a720c4fbd358c4, type: 3}
---- !u!114 &880756138 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114867207549911140, guid: fbef2e335466a2d4b9516a185d56d816,
-    type: 2}
-  m_PrefabInternal: {fileID: 426393382}
-  m_Script: {fileID: 11500000, guid: b2735a1832e35a44b8a720c4fbd358c4, type: 3}
 --- !u!1001 &933913414
 Prefab:
   m_ObjectHideFlags: 0
