@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 15
-  APCost: 1
+  APCost: 3
   AttackName: Ragnarok
   TargetAllies: 0
   Melee: 0
